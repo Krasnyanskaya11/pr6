@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <h1>
+      <title>Slider</title>
+      
+   </h1>
+
+   <script src="assets/js/script.js"></script> 
+   <link rel="stylesheet" href="assets/css/layout.css">
+     <link rel="stylesheet" href="assets/css/style.css">
+   <script>
+    window.onload = function() {
+        // ви можете зробити скільки завгодно слайдів
+        let slides = [
+            {
+                title: "Google",
+                background:"https://via.placeholder.com/500x150",
+                link: "http://google.com"
+            }, {
+                title: "Yahoo",
+                background:"https://via.placeholder.com/500x150",
+                link: "http://yahoo.com"
+            },{
+                title:"The Noisetier",
+                background:"assets/images/img.jpg",
+                link:"http://thenoisetier.com/blog/nice-to-meet-you-annie-atkins-from-requisite-to-the-oscar",
+            }
+        ]
+        Slider.initSlider(slides);
+    };
+
+    
+ </script>
+ 
+
+</head>
+<body>
+    <header class="header"><img src = "assets/img/icon.jpeg" height = "50" width = "50" /></header>
+    <div class="container">
+       <main class="center column">
+           <article>
+               <h1>Heading</h1>
+               <div id="slider" class = "hidden"></div>
+               
+                <button class =  "prevBtn">Prev</button>
+                <button class = "nextBtn">Next</button>
+                <button class = "hideBtn">Show</button>
+                <button class = "toggleBtn">Start</button>
+                
+                <button class = "first">1</button>
+                <button class = "second">2</button>
+                <button class = "third">3</button>
+                
+                <script>
+     const prevBtn = document.querySelector('.prevBtn');
+     const nextBtn = document.querySelector('.nextBtn');
+     const hide = document.querySelector('.hideBtn');
+     const first = document.querySelector('.first');
+      const second = document.querySelector('.second');
+       const third = document.querySelector('.third');
+    const slider_container = document.querySelector('.hidden');
+    
+     first.addEventListener('click', () => {
+        Slider.setSlide(0);
+     });
+     
+      second.addEventListener('click', () => {
+        Slider.setSlide(1);
+     });
+     
+      third.addEventListener('click', () => {
+        Slider.setSlide(2);
+     });
+    
+    
+     prevBtn.addEventListener('click', () => {
+        Slider.prevSlide();
+     });
+    
+    nextBtn.addEventListener('click',() => {
+        Slider.nextSlide();
+    })
+    
+    hide.addEventListener('click', () =>{
+          if (slider_container.classList.contains("hidden")) {
+        hide.textContent = "Hide";
+      } else {
+        hide.textContent = "Show";
+      }
+    
+      slider_container.classList.toggle("hidden");
+    })
+    
+    
+    
+    const toggle = document.querySelector('.toggleBtn');
+    
+    toggle.addEventListener('click', (event)=>{
+        if (event.target.classList.contains('start')){
+            event.target.innerHTML = 'Start';//получает  и меняет содержимое  контента
+            clearInterval(interval)
+        } else {
+            event.target.innerHTML = 'Stop';
+            interval = setInterval(()=>{
+                Slider.nextSlide();
+            },3000)
+        }
+        event.target.classList.toggle('start')
+     });
+        
+                </script>
+           <p></p>
+       </article>
+   </main>
+   <nav class="left column">
+    <h3>Left heading</h3>
+    <ul>
+        <li><a href="./media.html">Media</a></li>
+        <li><a href="./slider.html">Slider</a></li>
+        <li><a href="./table.html">Table</a></li>
+        <li><a href="./contact.html">Contact us</a></li>
+        <li><a href="./about.html">About us</a></li>
+    </ul>
+    <h3>Left heading</h3>
+    <ul>
+        <li><a href="#">Link 1</a></li>
+    </ul>
+</nav>
+<div class="right column">
+    <h3>Right heading</h3>
+    <p></p>
+</div>
+<div class="push"></div>
+</div>
+<div class="footer-wrapper">
+<footer class="footer"><p>Footer...</p></footer>
+
+
+
+</div>
+</body>
+</html>
